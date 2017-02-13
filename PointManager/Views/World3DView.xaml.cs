@@ -23,7 +23,7 @@ namespace PointManager.Views
     /// </summary>
     public partial class World3DView : UserControl
     {
-        private World3DViewModel viewModel;
+        private readonly World3DViewModel viewModel;
         public World3DView()
         {
             viewModel = new World3DViewModel();

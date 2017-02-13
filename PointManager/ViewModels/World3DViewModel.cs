@@ -11,7 +11,7 @@ namespace PointManager.ViewModels
     class World3DViewModel : ViewModelBase
     {
         public enum Movement { Negative = -1, None = 0, Positive = 1 }
-        readonly System.Windows.Media.Media3D.PerspectiveCamera _newPerspectiveCamera = new PerspectiveCamera();
+
         System.Windows.Threading.DispatcherTimer _timer;
         Movement _walk, _strafe;
         private double _steps = 1;
@@ -31,37 +31,34 @@ namespace PointManager.ViewModels
 
             set
             {
-                _steps = value;
+                _steps = value; OnPropertyChanged();
             }
         }
 
         public Camera CameraPosition
         {
             get { return _cameraPosition; }
-            set { _cameraPosition = value; }
+            set { _cameraPosition = value; OnPropertyChanged();}
         }
 
         public Movement Walk
         {
             get { return _walk; }
-            set { _walk = value; }
+            set { _walk = value; OnPropertyChanged();}
         }
 
         public Movement Strafe
         {
             get { return _strafe; }
-            set { _strafe = value; }
+            set { _strafe = value; OnPropertyChanged();}
         }
 
-        public PerspectiveCamera NewPerspectiveCamera
-        {
-            get { return _newPerspectiveCamera; }
-        }
+        public PerspectiveCamera NewPerspectiveCamera { get; } = new PerspectiveCamera();
 
         public DispatcherTimer Timer
         {
             get { return _timer; }
-            set { _timer = value; }
+            set { _timer = value; OnPropertyChanged();}
         }
     }
 }
