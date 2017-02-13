@@ -1,4 +1,4 @@
-﻿namespace Maze
+﻿namespace PointManager.Temp
 {
 
     //MODEL

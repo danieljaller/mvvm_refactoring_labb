@@ -6,7 +6,7 @@ using System.Windows.Media.Media3D;
 using System.Windows.Media;
 using System.Collections.Generic;
 
-namespace Maze
+namespace PointManager.Temp
 {
     public class MazeGenerator
     {

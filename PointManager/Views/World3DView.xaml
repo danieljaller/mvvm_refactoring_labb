@@ -7,6 +7,41 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <Viewport3D  Name="Viewport3D1" Margin="0,0,0,0">
+            <Viewport3D.Camera>
+                <PerspectiveCamera Position="0,0,0" LookDirection="0,0,0 " UpDirection="0,0,1" />
+            </Viewport3D.Camera>
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <Model3DGroup x:Name="Model3Dgroup">
+                        <AmbientLight Color="Gray"/>
+                        <DirectionalLight Color="Gray" Direction="-1,0,0"/>
+                        <DirectionalLight Color="Gray" Direction="1,0,1"/>
+                    </Model3DGroup>
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+        </Viewport3D>
+        <StackPanel Orientation="Horizontal" >
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="X" />
+                <TextBox x:Name="TextX" Width="70" IsEnabled="False" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Y" />
+                <TextBox x:Name="TextY" Width="70" IsEnabled="False" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Z"  />
+                <TextBox x:Name="TextZ" Width="70" IsEnabled="False" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Vertical"  />
+                <TextBox x:Name="TextV" Width="70" IsEnabled="False" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Horizontal"  />
+                <TextBox x:Name="TextH" Width="70" IsEnabled="False" />
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>
