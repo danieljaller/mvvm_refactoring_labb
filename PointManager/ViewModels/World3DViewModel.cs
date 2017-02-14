@@ -71,5 +71,6 @@ namespace PointManager.ViewModels
             var proc2 = point.X / uc.ActualWidth;
             ViewModelLocator.World3DViewModel.Camera.DegreeHorizontal = 720 - 720 * proc2;
         }
+
     }
 }

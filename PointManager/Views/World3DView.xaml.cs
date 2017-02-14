@@ -71,7 +71,7 @@ namespace PointManager.Views
             Viewport3D1.Camera = ViewModelLocator.World3DViewModel.NewPerspectiveCamera;
             ViewModelLocator.World3DViewModel.Camera = new Camera() { X = 1, Y = 0.5, Z = 0 };
             ViewModelLocator.World3DViewModel.NewPerspectiveCamera.Position = ViewModelLocator.World3DViewModel.Camera.Position;
-            ViewModelLocator.World3DViewModel.NewPerspectiveCamera.LookDirection = 
+            ViewModelLocator.World3DViewModel.NewPerspectiveCamera.LookDirection =
                 new Vector3D(ViewModelLocator.World3DViewModel.Camera.Look.X, ViewModelLocator.World3DViewModel.Camera.Look.Y, ViewModelLocator.World3DViewModel.Camera.Look.Z);
             (new MazeGenerator()).MakeMaze(Model3Dgroup);
             ViewModelLocator.World3DViewModel.Timer = new System.Windows.Threading.DispatcherTimer();

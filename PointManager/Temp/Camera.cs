@@ -1,22 +1,22 @@
-﻿using System;
+﻿using PointManager.Annotations;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media.Media3D;
-using PointManager.Annotations;
 
 namespace PointManager.Temp
 {
 
     //MODEL?
-    public class Camera : INotifyPropertyChanged
+    public class Camera : INotifyPropertyChanged, ICamera
     {
-        public Point3D Position { get { return _position; } set { _position = value; OnPropertyChanged();} }
-        public double DegreeHorizontal { get { return _degreeHorizontal; } set { _degreeHorizontal = AngleInterval(value); OnPropertyChanged();} }
-        public double DegreeVertical { get { return _degreeVertical; } set { _degreeVertical = AngleInterval(value); OnPropertyChanged();} }
+        public Point3D Position { get { return _position; } set { _position = value; OnPropertyChanged(); } }
+        public double DegreeHorizontal { get { return _degreeHorizontal; } set { _degreeHorizontal = AngleInterval(value); OnPropertyChanged(); } }
+        public double DegreeVertical { get { return _degreeVertical; } set { _degreeVertical = AngleInterval(value); OnPropertyChanged(); } }
 
-        public double X { get { return _position.X; } set { _position.X = value; OnPropertyChanged();} }
-        public double Y { get { return _position.Y; } set { _position.Y = value; OnPropertyChanged();} }
-        public double Z { get { return _position.Z; } set { _position.Z = value; OnPropertyChanged();} }
+        public double X { get { return _position.X; } set { _position.X = value; OnPropertyChanged(); } }
+        public double Y { get { return _position.Y; } set { _position.Y = value; OnPropertyChanged(); } }
+        public double Z { get { return _position.Z; } set { _position.Z = value; OnPropertyChanged(); } }
 
         public Point3D Look
         {
@@ -28,13 +28,13 @@ namespace PointManager.Temp
             }
         }
 
-        public void Move(double Distance) { _position.X += Math.Sin(DegreeHorizontal * halfPi) * Distance; _position.Z += Math.Cos(DegreeHorizontal * halfPi) * Distance; }
-        public void Strafe(double Distance)
+        public void Move(double distance) { _position.X += Math.Sin(DegreeHorizontal * halfPi) * distance; _position.Z += Math.Cos(DegreeHorizontal * halfPi) * distance; }
+        public void Strafe(double distance)
         {
-            var dx = Math.Sin(DegreeHorizontal * halfPi) * Distance;
-            var dz = Math.Cos(DegreeHorizontal * halfPi) * Distance;
-            _position.X +=-dz;
-            _position.Z +=dx;
+            var dx = Math.Sin(DegreeHorizontal * halfPi) * distance;
+            var dz = Math.Cos(DegreeHorizontal * halfPi) * distance;
+            _position.X += -dz;
+            _position.Z += dx;
         }
         private const double halfPi = Math.PI / 180;
         private Point3D _position;
