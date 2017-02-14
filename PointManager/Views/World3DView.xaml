@@ -4,10 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointManager.Views"
-             mc:Ignorable="d" 
+             xmlns:viewmodel="clr-namespace:PointManager.ViewModels"
+             xmlns:temp="clr-namespace:PointManager.Temp"
+    mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              MinHeight="300" MinWidth="500"
              KeyDown="Window1_KeyDown" KeyUp="Window1_KeyUp" Loaded="Window1_Loaded" MouseMove="Window1_MouseMove">
+    <UserControl.DataContext>
+        <viewmodel:World3DViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Viewport3D  Name="Viewport3D1" Margin="0,0,0,0">
             <Viewport3D.Camera>
@@ -23,10 +28,10 @@
                 </ModelVisual3D.Content>
             </ModelVisual3D>
         </Viewport3D>
-        <StackPanel Orientation="Horizontal" >
+        <StackPanel Orientation="Horizontal" DataContext="{Binding CameraPosition}">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="X" />
-                <TextBox x:Name="TextX" Width="70" IsEnabled="False" />
+                <TextBox x:Name="TextX" Width="70" IsEnabled="False" Text="{Binding X}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Y" />
@@ -38,7 +43,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Vertical"  />
-                <TextBox x:Name="TextV" Width="70" IsEnabled="False" />
+                <TextBox x:Name="TextV" Width="70" IsEnabled="False" Text="{Binding DegreeVertical, Converter={StaticResource cameraPositionConverter}, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Horizontal"  />
@@ -47,3 +52,4 @@
         </StackPanel>
     </Grid>
 </UserControl>
+

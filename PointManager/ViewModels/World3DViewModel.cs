@@ -12,7 +12,7 @@ namespace PointManager.ViewModels
     {
         public enum Movement { Negative = -1, None = 0, Positive = 1 }
 
-        System.Windows.Threading.DispatcherTimer _timer;
+        public DispatcherTimer _timer;
         Movement _walk, _strafe;
         private double _steps = 1;
         private Camera _cameraPosition;
