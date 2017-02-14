@@ -69,7 +69,6 @@ namespace PointManager.Views
             if (ViewModelLocator.World3DViewModel.Strafe != World3DViewModel.Movement.None) ViewModelLocator.World3DViewModel.Camera.Strafe((double)ViewModelLocator.World3DViewModel.Strafe * ViewModelLocator.World3DViewModel.Steps * 0.1);
             ViewModelLocator.World3DViewModel.NewPerspectiveCamera.Position = ViewModelLocator.World3DViewModel.Camera.Position;
             ViewModelLocator.World3DViewModel.NewPerspectiveCamera.LookDirection = new Vector3D(ViewModelLocator.World3DViewModel.Camera.Look.X, ViewModelLocator.World3DViewModel.Camera.Look.Y, ViewModelLocator.World3DViewModel.Camera.Look.Z);
-            ViewModelLocator.World3DViewModel.PrintCameraData();
         }
 
         //ViewModel

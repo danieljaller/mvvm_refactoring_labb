@@ -17,16 +17,6 @@ namespace PointManager.ViewModels
         Movement _walk, _strafe;
         private double _steps = 1;
         private Camera _camera;
-        private double _textX;
-        private double _textY;
-        private double _textZ;
-        private double _textV;
-        private double _textH;
-
-        public World3DViewModel()
-        {
-
-        }
 
         public double Steps
         {
@@ -64,51 +54,8 @@ namespace PointManager.ViewModels
         public DispatcherTimer Timer
         {
             get { return _timer; }
-            set { _timer = value; OnPropertyChanged(); PrintCameraData(); }
+            set { _timer = value; OnPropertyChanged(); }
         }
 
-        public double TextH
-        {
-            get { return _textH; }
-            set { _textH = value; OnPropertyChanged();}
-        }
-
-        public double TextV
-        {
-            get { return _textV; }
-            set { _textV = value; OnPropertyChanged();}
-        }
-
-        public double TextZ
-        {
-            get { return _textZ; }
-            set { _textZ = value; OnPropertyChanged();}
-        }
-
-        public double TextY
-        {
-            get { return _textY; }
-            set { _textY = value; OnPropertyChanged();}
-        }
-
-        public double TextX
-        {
-            get { return _textX; }
-            set { _textX = value; OnPropertyChanged();}
-        }
-
-        public void PrintCameraData()
-        {
-            
-            TextX = Camera.X;
-            
-            TextY = Camera.Y;
-            
-            TextZ = Camera.Z;
-            
-            TextV = Camera.DegreeVertical;
-            
-            TextH = Camera.DegreeHorizontal;
-        }
     }
 }
