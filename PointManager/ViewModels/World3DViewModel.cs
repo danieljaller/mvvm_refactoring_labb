@@ -1,8 +1,8 @@
-﻿using System.Windows;
+﻿using PointManager.Temp;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Media3D;
 using System.Windows.Threading;
-using Camera = PointManager.Temp.Camera;
 
 namespace PointManager.ViewModels
 {
@@ -13,22 +13,15 @@ namespace PointManager.ViewModels
         private DispatcherTimer _timer;
         Movement _walk, _strafe;
         private double _steps = 1;
-        private Camera _camera;
+        private ICamera _camera;
 
         public double Steps
         {
-            get
-            {
-                return _steps;
-            }
-
-            set
-            {
-                _steps = value; OnPropertyChanged();
-            }
+            get { return _steps; }
+            set { _steps = value; OnPropertyChanged(); }
         }
 
-        public Camera Camera
+        public ICamera Camera
         {
             get { return _camera; }
             set { _camera = value; OnPropertyChanged(); }

@@ -3,35 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:UC="clr-namespace:PointManager.Views"
         xmlns:viewmodels="clr-namespace:PointManager.ViewModels"
-		Title="MainWindow" Height="700" Width="800">
-    <Window.Resources>
-        <viewmodels:MainViewModel x:Key="MVM" />
-    </Window.Resources>
-    
-    <StackPanel x:Name="LayoutRoot" DataContext="{StaticResource MVM}" MinHeight="300" MinWidth="300" >
-        <UC:PointNavigationView />
-        <TextBlock Text="Id" />
-        <TextBox Text="{Binding ModelCameraPosition.Id}" />
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="800"
+        KeyDown="MainWindow_KeyDown" KeyUp="MainWindow_KeyUp">
+    <Window.DataContext>
+        <viewmodels:ViewModelLocator/>
+    </Window.DataContext>
 
-        <TextBlock Text="PositionName" />
-        <TextBox Text="{Binding ModelCameraPosition.PositionName}" />
+    <StackPanel x:Name="LayoutRoot"  MinHeight="300" MinWidth="300" >
+        <StackPanel DataContext="{Binding MainViewModel}">
+            <UC:PointNavigationView />
+            <TextBlock Text="Id" />
+            <TextBox Text="{Binding ModelCameraPosition.Id}" />
 
-        <TextBlock Text="cameraX" />
-        <TextBox Text="{Binding ModelCameraPosition.cameraX}" />
+            <TextBlock Text="PositionName" />
+            <TextBox Text="{Binding ModelCameraPosition.PositionName}" />
 
-        <TextBlock Text="cameraY" />
-        <TextBox Text="{Binding ModelCameraPosition.cameraY}" />
+            <TextBlock Text="cameraX" />
+            <TextBox Text="{Binding ModelCameraPosition.cameraX}" />
 
-        <TextBlock Text="cameraZ" />
-        <TextBox Text="{Binding ModelCameraPosition.cameraZ}" />
+            <TextBlock Text="cameraY" />
+            <TextBox Text="{Binding ModelCameraPosition.cameraY}" />
 
-        <TextBlock Text="cameraDegH" />
-        <TextBox Text="{Binding ModelCameraPosition.cameraDegH}" />
+            <TextBlock Text="cameraZ" />
+            <TextBox Text="{Binding ModelCameraPosition.cameraZ}" />
 
-        <TextBlock Text="cameraDegV" />
-        <TextBox Text="{Binding ModelCameraPosition.cameraDegV}" />
+            <TextBlock Text="cameraDegH" />
+            <TextBox Text="{Binding ModelCameraPosition.cameraDegH}" />
 
-        <Button Content="Save"  Command="{Binding SaveCameraPositionCommand}" />
-        <UC:World3DView x:Name="UCWorld3DView"/>
+            <TextBlock Text="cameraDegV" />
+            <TextBox Text="{Binding ModelCameraPosition.cameraDegV}" />
+
+            <Button Content="Save"  Command="{Binding SaveCameraPositionCommand}" />
+        </StackPanel>
+        <UC:World3DView x:Name="UCWorld3DView" DataContext="{Binding World3DViewModel}"/>
     </StackPanel>
 </Window>
