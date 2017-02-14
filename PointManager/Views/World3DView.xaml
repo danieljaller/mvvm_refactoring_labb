@@ -28,14 +28,14 @@
                 </ModelVisual3D.Content>
             </ModelVisual3D>
         </Viewport3D>
-        <StackPanel Orientation="Horizontal" DataContext="{Binding CameraPosition}">
+        <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="X" />
-                <TextBox x:Name="TextX" Width="70" IsEnabled="False" Text="{Binding X}"/>
+                <TextBox x:Name="TextX" Width="70" IsEnabled="False" Text="{Binding TextX, Converter={StaticResource cameraPositionConverter}}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Y" />
-                <TextBox x:Name="TextY" Width="70" IsEnabled="False" />
+                <TextBox x:Name="TextY" Width="70" IsEnabled="False" Text="{Binding TextY}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Z"  />
@@ -43,7 +43,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Vertical"  />
-                <TextBox x:Name="TextV" Width="70" IsEnabled="False" Text="{Binding DegreeVertical, Converter={StaticResource cameraPositionConverter}, Mode=OneWay}"/>
+                <TextBox x:Name="TextV" Width="70" IsEnabled="False" Text="{Binding TextV, Converter={StaticResource cameraPositionConverter}, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Horizontal"  />

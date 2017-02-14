@@ -12,10 +12,15 @@ namespace PointManager.ViewModels
     {
         public enum Movement { Negative = -1, None = 0, Positive = 1 }
 
-        public DispatcherTimer _timer;
+        private DispatcherTimer _timer;
         Movement _walk, _strafe;
         private double _steps = 1;
         private Camera _cameraPosition;
+        private string _textX;
+        private string _textY;
+        private string _textZ;
+        private string _textV;
+        private string _textH;
 
         public World3DViewModel()
         {
@@ -59,6 +64,50 @@ namespace PointManager.ViewModels
         {
             get { return _timer; }
             set { _timer = value; OnPropertyChanged();}
+        }
+
+        public string TextH
+        {
+            get { return _textH; }
+            set { _textH = value; OnPropertyChanged();}
+        }
+
+        public string TextV
+        {
+            get { return _textV; }
+            set { _textV = value; OnPropertyChanged();}
+        }
+
+        public string TextZ
+        {
+            get { return _textZ; }
+            set { _textZ = value; OnPropertyChanged();}
+        }
+
+        public string TextY
+        {
+            get { return _textY; }
+            set { _textY = value; OnPropertyChanged();}
+        }
+
+        public string TextX
+        {
+            get { return _textX; }
+            set { _textX = value; OnPropertyChanged();}
+        }
+
+        public void PrintCameraData()
+        {
+            
+            TextX = CameraPosition.X.ToString();
+            
+            TextY = CameraPosition.Y.ToString();
+            
+            TextZ = CameraPosition.Z.ToString();
+            
+            TextV = CameraPosition.DegreeVertical.ToString();
+            
+            TextH = CameraPosition.DegreeHorizontal.ToString();
         }
     }
 }
