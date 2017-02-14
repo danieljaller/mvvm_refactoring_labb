@@ -35,9 +35,11 @@ namespace PointManager.Views
         private void PrintCameraData()
         {
             TextX.Text = (Math.Round(viewModel.CameraPosition.X, 2)).ToString();
+            //TextX.Text = viewModel.CameraPosition.X.ToString();
             TextY.Text = (Math.Round(viewModel.CameraPosition.Y, 2)).ToString();
             TextZ.Text = (Math.Round(viewModel.CameraPosition.Z, 2)).ToString();
-            TextV.Text = (Math.Round(viewModel.CameraPosition.DegreeVertical, 2)).ToString();
+            //TextV.Text = (Math.Round(viewModel.CameraPosition.DegreeVertical, 2)).ToString();
+            TextV.Text = viewModel.CameraPosition.DegreeVertical.ToString();
             TextH.Text = (Math.Round(viewModel.CameraPosition.DegreeHorizontal, 2)).ToString();
         }
 

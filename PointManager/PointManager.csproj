@@ -56,6 +56,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\CameraPositionConverter.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Temp\Camera.cs" />
     <Compile Include="Temp\MazeGenerator.cs" />
@@ -122,9 +123,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\PointManager.Data\PointManager.Data.csproj">
       <Project>{3560d345-263c-4eb1-816d-1fa6a3877c6a}</Project>
