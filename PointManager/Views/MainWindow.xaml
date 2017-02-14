@@ -32,6 +32,6 @@
         <TextBox Text="{Binding ModelCameraPosition.cameraDegV}" />
 
         <Button Content="Save"  Command="{Binding SaveCameraPositionCommand}" />
-        <UC:World3DView/>
+        <UC:World3DView x:Name="UCWorld3DView"/>
     </StackPanel>
 </Window>

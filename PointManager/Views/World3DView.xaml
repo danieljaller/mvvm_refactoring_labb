@@ -11,7 +11,7 @@
              MinHeight="300" MinWidth="500"
              KeyDown="Window1_KeyDown" KeyUp="Window1_KeyUp" Loaded="Window1_Loaded" MouseMove="Window1_MouseMove">
     <UserControl.DataContext>
-        <viewmodel:World3DViewModel/>
+        <viewmodel:ViewModelLocator/>
     </UserControl.DataContext>
     <Grid>
         <Viewport3D  Name="Viewport3D1" Margin="0,0,0,0">
@@ -28,26 +28,26 @@
                 </ModelVisual3D.Content>
             </ModelVisual3D>
         </Viewport3D>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" DataContext="{Binding World3DViewModel}">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="X" />
-                <TextBox x:Name="TextX" Width="70" IsEnabled="False" Text="{Binding TextX, Converter={StaticResource cameraPositionConverter}}"/>
+                <TextBox x:Name="TextX" Width="70" IsEnabled="False" Text="{Binding Camera.X, Converter={StaticResource cameraPositionConverter}}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Y" />
-                <TextBox x:Name="TextY" Width="70" IsEnabled="False" Text="{Binding TextY}"/>
+                <TextBox x:Name="TextY" Width="70" IsEnabled="False" Text="{Binding Camera.Y, Converter={StaticResource cameraPositionConverter}}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Z"  />
-                <TextBox x:Name="TextZ" Width="70" IsEnabled="False" Text="{Binding TextZ}"/>
+                <TextBox x:Name="TextZ" Width="70" IsEnabled="False" Text="{Binding Camera.Z, Converter={StaticResource cameraPositionConverter}}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Vertical"  />
-                <TextBox x:Name="TextV" Width="70" IsEnabled="False" Text="{Binding TextV, Converter={StaticResource cameraPositionConverter}, Mode=OneWay}"/>
+                <TextBox x:Name="TextV" Width="70" IsEnabled="False" Text="{Binding Camera.DegreeVertical, Converter={StaticResource cameraPositionConverter}, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Horizontal"  />
-                <TextBox x:Name="TextH" Width="70" IsEnabled="False" Text="{Binding TextH}"/>
+                <TextBox x:Name="TextH" Width="70" IsEnabled="False" Text="{Binding Camera.DegreeHorizontal, Converter={StaticResource cameraPositionConverter}}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

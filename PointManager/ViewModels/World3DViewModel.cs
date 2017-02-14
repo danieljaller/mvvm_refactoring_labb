@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Media.Media3D;
 using System.Windows.Threading;
@@ -15,12 +16,12 @@ namespace PointManager.ViewModels
         private DispatcherTimer _timer;
         Movement _walk, _strafe;
         private double _steps = 1;
-        private Camera _cameraPosition;
-        private string _textX;
-        private string _textY;
-        private string _textZ;
-        private string _textV;
-        private string _textH;
+        private Camera _camera;
+        private double _textX;
+        private double _textY;
+        private double _textZ;
+        private double _textV;
+        private double _textH;
 
         public World3DViewModel()
         {
@@ -40,10 +41,10 @@ namespace PointManager.ViewModels
             }
         }
 
-        public Camera CameraPosition
+        public Camera Camera
         {
-            get { return _cameraPosition; }
-            set { _cameraPosition = value; OnPropertyChanged();}
+            get { return _camera; }
+            set { _camera = value; OnPropertyChanged();}
         }
 
         public Movement Walk
@@ -66,31 +67,31 @@ namespace PointManager.ViewModels
             set { _timer = value; OnPropertyChanged(); PrintCameraData(); }
         }
 
-        public string TextH
+        public double TextH
         {
             get { return _textH; }
             set { _textH = value; OnPropertyChanged();}
         }
 
-        public string TextV
+        public double TextV
         {
             get { return _textV; }
             set { _textV = value; OnPropertyChanged();}
         }
 
-        public string TextZ
+        public double TextZ
         {
             get { return _textZ; }
             set { _textZ = value; OnPropertyChanged();}
         }
 
-        public string TextY
+        public double TextY
         {
             get { return _textY; }
             set { _textY = value; OnPropertyChanged();}
         }
 
-        public string TextX
+        public double TextX
         {
             get { return _textX; }
             set { _textX = value; OnPropertyChanged();}
@@ -99,15 +100,15 @@ namespace PointManager.ViewModels
         public void PrintCameraData()
         {
             
-            TextX = CameraPosition.X.ToString();
+            TextX = Camera.X;
             
-            TextY = CameraPosition.Y.ToString();
+            TextY = Camera.Y;
             
-            TextZ = CameraPosition.Z.ToString();
+            TextZ = Camera.Z;
             
-            TextV = CameraPosition.DegreeVertical.ToString();
+            TextV = Camera.DegreeVertical;
             
-            TextH = CameraPosition.DegreeHorizontal.ToString();
+            TextH = Camera.DegreeHorizontal;
         }
     }
 }

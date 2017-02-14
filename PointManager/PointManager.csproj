@@ -62,6 +62,7 @@
     <Compile Include="Temp\MazeGenerator.cs" />
     <Compile Include="Temp\Surface.cs" />
     <Compile Include="ViewModels\PointNavigationViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\World3DViewModel.cs" />
     <Compile Include="Views\PointNavigationView.xaml.cs">
       <DependentUpon>PointNavigationView.xaml</DependentUpon>

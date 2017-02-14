@@ -23,11 +23,12 @@ namespace PointManager.Views
     /// </summary>
     public partial class World3DView : UserControl
     {
-        private readonly World3DViewModel viewModel;
+
         public World3DView()
         {
-            viewModel = new World3DViewModel();
+            
             InitializeComponent();
+            Focus();
         }
 
         //ViewModel
@@ -35,28 +36,28 @@ namespace PointManager.Views
 
 
         //Command?
-        private void Window1_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        public void Window1_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             switch (e.Key)
             {
-                case Key.Up: viewModel.Walk = World3DViewModel.Movement.Positive; break;
-                case Key.Down: viewModel.Walk = World3DViewModel.Movement.Negative; break;
-                case Key.Left: viewModel.Strafe = World3DViewModel.Movement.Negative; break;
-                case Key.Right: viewModel.Strafe = World3DViewModel.Movement.Positive; break;
-                case Key.Z: viewModel.CameraPosition.Y += 0.1; break;
-                case Key.X: viewModel.CameraPosition.Y -= 0.1; break;
+                case Key.Up: ViewModelLocator.World3DViewModel.Walk = World3DViewModel.Movement.Positive; break;
+                case Key.Down: ViewModelLocator.World3DViewModel.Walk = World3DViewModel.Movement.Negative; break;
+                case Key.Left: ViewModelLocator.World3DViewModel.Strafe = World3DViewModel.Movement.Negative; break;
+                case Key.Right: ViewModelLocator.World3DViewModel.Strafe = World3DViewModel.Movement.Positive; break;
+                case Key.Z: ViewModelLocator.World3DViewModel.Camera.Y += 0.1; break;
+                case Key.X: ViewModelLocator.World3DViewModel.Camera.Y -= 0.1; break;
             }
         }
 
         //Command?
-        private void Window1_KeyUp(object sender, KeyEventArgs e)
+        public void Window1_KeyUp(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
-                case Key.Up: viewModel.Walk = World3DViewModel.Movement.None; break;
-                case Key.Down: viewModel.Walk = viewModel.Walk = World3DViewModel.Movement.None; break;
-                case Key.Left: viewModel.Strafe = World3DViewModel.Movement.None; break;
-                case Key.Right: viewModel.Strafe = World3DViewModel.Movement.None; break;
+                case Key.Up: ViewModelLocator.World3DViewModel.Walk = World3DViewModel.Movement.None; break;
+                case Key.Down: ViewModelLocator.World3DViewModel.Walk = ViewModelLocator.World3DViewModel.Walk = World3DViewModel.Movement.None; break;
+                case Key.Left: ViewModelLocator.World3DViewModel.Strafe = World3DViewModel.Movement.None; break;
+                case Key.Right: ViewModelLocator.World3DViewModel.Strafe = World3DViewModel.Movement.None; break;
             }
         }
 
@@ -64,25 +65,25 @@ namespace PointManager.Views
         //Command?
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (viewModel.Walk != World3DViewModel.Movement.None) viewModel.CameraPosition.Move((double)viewModel.Walk * viewModel.Steps * 0.1);
-            if (viewModel.Strafe != World3DViewModel.Movement.None) viewModel.CameraPosition.Strafe((double)viewModel.Strafe * viewModel.Steps * 0.1);
-            viewModel.NewPerspectiveCamera.Position = viewModel.CameraPosition.Position;
-            viewModel.NewPerspectiveCamera.LookDirection = new Vector3D(viewModel.CameraPosition.Look.X, viewModel.CameraPosition.Look.Y, viewModel.CameraPosition.Look.Z);
-            viewModel.PrintCameraData();
+            if (ViewModelLocator.World3DViewModel.Walk != World3DViewModel.Movement.None) ViewModelLocator.World3DViewModel.Camera.Move((double)ViewModelLocator.World3DViewModel.Walk * ViewModelLocator.World3DViewModel.Steps * 0.1);
+            if (ViewModelLocator.World3DViewModel.Strafe != World3DViewModel.Movement.None) ViewModelLocator.World3DViewModel.Camera.Strafe((double)ViewModelLocator.World3DViewModel.Strafe * ViewModelLocator.World3DViewModel.Steps * 0.1);
+            ViewModelLocator.World3DViewModel.NewPerspectiveCamera.Position = ViewModelLocator.World3DViewModel.Camera.Position;
+            ViewModelLocator.World3DViewModel.NewPerspectiveCamera.LookDirection = new Vector3D(ViewModelLocator.World3DViewModel.Camera.Look.X, ViewModelLocator.World3DViewModel.Camera.Look.Y, ViewModelLocator.World3DViewModel.Camera.Look.Z);
+            ViewModelLocator.World3DViewModel.PrintCameraData();
         }
 
         //ViewModel
         private void Window1_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            Viewport3D1.Camera = viewModel.NewPerspectiveCamera;
-            viewModel.CameraPosition = new Camera() { X = 1, Y = 0.5, Z = 0 }; //CameraPososition.degreeHorizontal = CameraPososition.degreeVertical =0;
-            viewModel.NewPerspectiveCamera.Position = viewModel.CameraPosition.Position;
-            viewModel.NewPerspectiveCamera.LookDirection = new Vector3D(viewModel.CameraPosition.Look.X, viewModel.CameraPosition.Look.Y, viewModel.CameraPosition.Look.Z);
+            Viewport3D1.Camera = ViewModelLocator.World3DViewModel.NewPerspectiveCamera;
+            ViewModelLocator.World3DViewModel.Camera = new Camera() { X = 1, Y = 0.5, Z = 0 }; //CameraPososition.degreeHorizontal = CameraPososition.degreeVertical =0;
+            ViewModelLocator.World3DViewModel.NewPerspectiveCamera.Position = ViewModelLocator.World3DViewModel.Camera.Position;
+            ViewModelLocator.World3DViewModel.NewPerspectiveCamera.LookDirection = new Vector3D(ViewModelLocator.World3DViewModel.Camera.Look.X, ViewModelLocator.World3DViewModel.Camera.Look.Y, ViewModelLocator.World3DViewModel.Camera.Look.Z);
             (new MazeGenerator()).MakeMaze(Model3Dgroup);
-            viewModel.Timer = new System.Windows.Threading.DispatcherTimer();
-            viewModel.Timer.Interval = TimeSpan.FromMilliseconds(16);
-            viewModel.Timer.Tick += new EventHandler(Timer_Tick);
-            this.viewModel.Timer.Start();
+            ViewModelLocator.World3DViewModel.Timer = new System.Windows.Threading.DispatcherTimer();
+            ViewModelLocator.World3DViewModel.Timer.Interval = TimeSpan.FromMilliseconds(16);
+            ViewModelLocator.World3DViewModel.Timer.Tick += new EventHandler(Timer_Tick);
+            ViewModelLocator.World3DViewModel.Timer.Start();
         }
 
 
@@ -94,16 +95,16 @@ namespace PointManager.Views
             if (point.Y > midY)
             {
                 var proc = (point.Y - midY) / midY;
-                viewModel.CameraPosition.DegreeVertical = 360 - 90 * proc;
+                ViewModelLocator.World3DViewModel.Camera.DegreeVertical = 360 - 90 * proc;
             }
             // Vert: up:  0-90
             if (point.Y < midY)
             {
                 var proc = point.Y / midY;
-                viewModel.CameraPosition.DegreeVertical = 90 - 90 * proc;
+                ViewModelLocator.World3DViewModel.Camera.DegreeVertical = 90 - 90 * proc;
             }
             var proc2 = point.X / this.ActualWidth;
-            viewModel.CameraPosition.DegreeHorizontal = 720 - 720 * proc2;
+            ViewModelLocator.World3DViewModel.Camera.DegreeHorizontal = 720 - 720 * proc2;
         }
 
 
