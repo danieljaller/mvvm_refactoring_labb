@@ -10,11 +10,11 @@ namespace PointManager.Temp
     //MODEL?
     public class Camera : INotifyPropertyChanged
     {
-        public Point3D Position { get { return _position; } set { _position = value; } }
+        public Point3D Position { get { return _position; } set { _position = value; OnPropertyChanged();} }
         public double DegreeHorizontal { get { return _degreeHorizontal; } set { _degreeHorizontal = AngleInterval(value); OnPropertyChanged();} }
         public double DegreeVertical { get { return _degreeVertical; } set { _degreeVertical = AngleInterval(value); OnPropertyChanged();} }
 
-        public double X { get { return _position.X; } set { _position.X = value; OnPropertyChanged(nameof(X));} }
+        public double X { get { return _position.X; } set { _position.X = value; OnPropertyChanged();} }
         public double Y { get { return _position.Y; } set { _position.Y = value; OnPropertyChanged();} }
         public double Z { get { return _position.Z; } set { _position.Z = value; OnPropertyChanged();} }
 

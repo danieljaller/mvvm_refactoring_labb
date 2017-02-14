@@ -39,7 +39,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Z"  />
-                <TextBox x:Name="TextZ" Width="70" IsEnabled="False" />
+                <TextBox x:Name="TextZ" Width="70" IsEnabled="False" Text="{Binding TextZ}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Vertical"  />
@@ -47,7 +47,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Horizontal"  />
-                <TextBox x:Name="TextH" Width="70" IsEnabled="False" />
+                <TextBox x:Name="TextH" Width="70" IsEnabled="False" Text="{Binding TextH}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

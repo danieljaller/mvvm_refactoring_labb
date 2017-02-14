@@ -63,7 +63,7 @@ namespace PointManager.ViewModels
         public DispatcherTimer Timer
         {
             get { return _timer; }
-            set { _timer = value; OnPropertyChanged();}
+            set { _timer = value; OnPropertyChanged(); PrintCameraData(); }
         }
 
         public string TextH
