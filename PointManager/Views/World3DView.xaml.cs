@@ -17,7 +17,6 @@ namespace PointManager.Views
 
         public World3DView()
         {
-
             InitializeComponent();
             Focus();
         }

@@ -3,16 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:PointManager.Views"
-             xmlns:viewmodel="clr-namespace:PointManager.ViewModels"
-             xmlns:temp="clr-namespace:PointManager.Temp"
-    mc:Ignorable="d" 
+             mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              MinHeight="300" MinWidth="500"
-             KeyDown="Window1_KeyDown" KeyUp="Window1_KeyUp" Loaded="Window1_Loaded" MouseMove="Window1_MouseMove">
-    <UserControl.DataContext>
-        <viewmodel:ViewModelLocator/>
-    </UserControl.DataContext>
+             KeyDown="Window1_KeyDown" KeyUp="Window1_KeyUp" Loaded="Window1_Loaded" MouseMove="Window1_MouseMove"
+             DataContext="{StaticResource ViewModelLocator}">
     <Grid>
         <Viewport3D  Name="Viewport3D1" Margin="0,0,0,0">
             <Viewport3D.Camera>
@@ -28,7 +23,7 @@
                 </ModelVisual3D.Content>
             </ModelVisual3D>
         </Viewport3D>
-        <StackPanel Orientation="Horizontal" DataContext="{Binding World3DViewModel}">
+        <StackPanel Orientation="Horizontal" DataContext="{Binding Path=World3DViewModel}">
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="X" />
                 <TextBox Width="70" IsEnabled="False" Text="{Binding Camera.X, Converter={StaticResource cameraPositionConverter}}"/>
@@ -43,7 +38,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Vertical"  />
-                <TextBox Width="70" IsEnabled="False" Text="{Binding Camera.DegreeVertical, Converter={StaticResource cameraPositionConverter}, Mode=OneWay}"/>
+                <TextBox Width="70" IsEnabled="False" Text="{Binding Camera.DegreeVertical, Converter={StaticResource cameraPositionConverter}}"/>
             </StackPanel>
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Horizontal"  />
