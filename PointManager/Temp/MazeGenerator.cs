@@ -97,7 +97,7 @@ namespace PointManager.Temp
             mg3.TriangleIndices.Add(TPoint + 3);
         }
 
-        private void ExtrudeSurface(ref MeshGeometry3D mg3, Surface wall)
+        private void ExtrudeSurface(ref MeshGeometry3D mg3, ISurface wall)
         {
             double xStep = 0;
             double zStep = 0;

@@ -2,7 +2,7 @@
 {
 
     //MODEL
-    public class Surface
+    public class Surface : ISurface
     {
         public Surface() { }
         public Surface(double x1, double z1, double x2, double z2) { X1 = x1; Z1 = z1; X2 = x2; Z2 = z2; }
