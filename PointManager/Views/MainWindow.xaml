@@ -8,9 +8,6 @@
         Title="MainWindow" Height="700" Width="800"
         KeyDown="MainWindow_KeyDown" KeyUp="MainWindow_KeyUp"
         DataContext="{StaticResource ViewModelLocator}">
-    <!--<Window.DataContext>
-        <viewmodels:ViewModelLocator/>
-    </Window.DataContext>-->
 
     <StackPanel x:Name="LayoutRoot"  MinHeight="300" MinWidth="300" >
         <StackPanel DataContext="{Binding Path=MainViewModel}">

@@ -1,6 +1,7 @@
 ﻿using PointManager.Temp;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Media3D;
 using System.Windows.Threading;
 
@@ -53,17 +54,54 @@ namespace PointManager.ViewModels
             if (point.Y > midY)
             {
                 var proc = (point.Y - midY) / midY;
-                ViewModelLocator.World3DViewModel.Camera.DegreeVertical = 360 - 90 * proc;
+                Camera.DegreeVertical = 360 - 90 * proc;
             }
             // Vert: up:  0-90
             if (point.Y < midY)
             {
                 var proc = point.Y / midY;
-                ViewModelLocator.World3DViewModel.Camera.DegreeVertical = 90 - 90 * proc;
+                Camera.DegreeVertical = 90 - 90 * proc;
             }
             var proc2 = point.X / uc.ActualWidth;
-            ViewModelLocator.World3DViewModel.Camera.DegreeHorizontal = 720 - 720 * proc2;
+            Camera.DegreeHorizontal = 720 - 720 * proc2;
         }
+
+        public void KeyDownHandler(KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Up: Walk = Movement.Positive; break;
+                case Key.Down: Walk = Movement.Negative; break;
+                case Key.Left: Strafe = Movement.Negative; break;
+                case Key.Right: Strafe = Movement.Positive; break;
+                case Key.Z: Camera.Y += 0.1; break;
+                case Key.X: Camera.Y -= 0.1; break;
+            }
+        }
+        public void KeyUpHandler(KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Up: Walk = Movement.None; break;
+                case Key.Down: Walk = Movement.None; break;
+                case Key.Left: Strafe = Movement.None; break;
+                case Key.Right: Strafe = Movement.None; break;
+            }
+        }
+        public void TimerTickHandler()
+        {
+            if (Walk != Movement.None)
+                Camera.Move(
+                    (double)Walk * Steps * 0.1);
+            if (Strafe != Movement.None)
+                Camera.Strafe(
+                    (double)Strafe * Steps * 0.1);
+            NewPerspectiveCamera.Position = Camera.Position;
+            NewPerspectiveCamera.LookDirection = new Vector3D(
+                Camera.Look.X, Camera.Look.Y,
+                Camera.Look.Z);
+        }
+
 
     }
 }
