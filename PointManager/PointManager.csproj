@@ -57,12 +57,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converters\CameraPositionConverter.cs" />
+    <Compile Include="Models\ICameraPosition.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Temp\Camera.cs" />
-    <Compile Include="Temp\ICamera.cs" />
-    <Compile Include="Temp\ISurface.cs" />
-    <Compile Include="Temp\MazeGenerator.cs" />
-    <Compile Include="Temp\Surface.cs" />
+    <Compile Include="Models\Camera.cs" />
+    <Compile Include="Models\ICamera.cs" />
+    <Compile Include="Utils\ISurface.cs" />
+    <Compile Include="Utils\MazeGenerator.cs" />
+    <Compile Include="Utils\Surface.cs" />
     <Compile Include="ViewModels\PointNavigationViewModel.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
     <Compile Include="ViewModels\World3DViewModel.cs" />

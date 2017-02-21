@@ -1,11 +1,10 @@
-﻿using PointManager.Temp;
+﻿using PointManager.Utils;
 using PointManager.ViewModels;
 using System;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Media3D;
-using Camera = PointManager.Temp.Camera;
+using Camera = PointManager.Models.Camera;
 
 namespace PointManager.Views
 {
@@ -14,7 +13,7 @@ namespace PointManager.Views
     /// </summary>
     public partial class World3DView : UserControl
     {
-        
+
         public World3DView()
         {
             InitializeComponent();
@@ -27,7 +26,7 @@ namespace PointManager.Views
             ViewModelLocator.World3DViewModel.KeyDownHandler(e);
         }
 
-        
+
 
         //Command?
         public void Window1_KeyUp(object sender, KeyEventArgs e)
@@ -35,7 +34,7 @@ namespace PointManager.Views
             ViewModelLocator.World3DViewModel.KeyUpHandler(e);
         }
 
-        
+
 
 
         //Command?
@@ -44,7 +43,7 @@ namespace PointManager.Views
             ViewModelLocator.World3DViewModel.TimerTickHandler();
         }
 
-        
+
 
         //ViewModel
         private void Window1_Loaded(object sender, System.Windows.RoutedEventArgs e)

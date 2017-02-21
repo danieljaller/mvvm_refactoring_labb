@@ -1,20 +1,20 @@
-﻿using System;
+﻿using PointManager.Commands;
 using PointManager.Models;
+using System;
 using System.Windows.Input;
-using PointManager.Commands;
 namespace PointManager.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
         public MainViewModel()
         {
-            System.Diagnostics.Debug.WriteLine("MainViewModel instans skapad: "+DateTime.Now);
+            System.Diagnostics.Debug.WriteLine("MainViewModel instans skapad: " + DateTime.Now);
             LoadModelCameraPosition();
             InitializeCommands();
         }
 
-        private CameraPosition _modelCameraPosition;
-        public CameraPosition ModelCameraPosition
+        private ICameraPosition _modelCameraPosition;
+        public ICameraPosition ModelCameraPosition
         {
             get { return _modelCameraPosition; }
             set

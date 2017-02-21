@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Windows;
+using System.Collections.Generic;
 using System.IO;
+using System.Windows;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
-using System.Windows.Media;
-using System.Collections.Generic;
 
-namespace PointManager.Temp
+namespace PointManager.Utils
 {
     public class MazeGenerator
     {

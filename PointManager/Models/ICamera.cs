@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media.Media3D;
 
-namespace PointManager.Temp
+namespace PointManager.Models
 {
     public interface ICamera
     {

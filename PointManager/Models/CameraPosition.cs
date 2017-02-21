@@ -1,7 +1,7 @@
 ﻿
 namespace PointManager.Models
 {
-    public class CameraPosition : ModelBase
+    public class CameraPosition : ModelBase, ICameraPosition
     {
         public int Id { get; set; }
         private string _PositionName;
